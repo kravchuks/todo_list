@@ -10,7 +10,7 @@ router.get("/", (req, res) => {
 // create a todo
 router.post("/", async (req, res) => {
   try {
-    const todo = await new Todo.create({
+    const todo = await Todo.create({
       title: req.body.title,
       done: false,
     });
