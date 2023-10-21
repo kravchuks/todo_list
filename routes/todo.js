@@ -3,8 +3,16 @@ const Todo = require("../models/todo");
 const router = Router();
 
 // get all todos
-router.get("/", (req, res) => {
-  res.json({ todos: "ff" });
+router.get("/", async (req, res) => {
+  try {
+    const todos = await Todo.findAll();
+    res.status(200).json(todos);
+  } catch (e) {
+    console.log(e);
+    res.status(500).json({
+      message: "Server error",
+    });
+  }
 });
 
 // create a todo
